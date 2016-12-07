@@ -13,4 +13,4 @@ exec sudo -u invoker ejudge-execute      \
     --max-stack-size="$6"M               \
     --secure-exec                        \
     --security-violation                 \
-    "./$1"
+    "`realpath "$1"`"
