@@ -2,13 +2,14 @@
 
 set -eu
 
+read -r file
 exec sudo -u invoker ejudge-execute      \
-    --stdin="$2"                         \
-    --stdout="$3"                        \
-    --stderr="$4"                        \
-    --time-limit-millis="$5"             \
-    --real-time-limit=$(($5 * 5 / 1000)) \
+    --stdin="$1"                         \
+    --stdout="$2"                        \
+    --stderr="$3"                        \
+    --time-limit-millis="$4"             \
+    --real-time-limit=$(($4 * 5 / 1000)) \
     --memory-limit                       \
-    --max-vm-size="$6"M                  \
-    --max-stack-size="$6"M               \
-    /opt/py3venv/bin/python3 "$1"
+    --max-vm-size="$5"M                  \
+    --max-stack-size="$5"M               \
+    /opt/py3venv/bin/python3 "$file" 2>&1

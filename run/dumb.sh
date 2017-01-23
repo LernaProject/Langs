@@ -4,12 +4,13 @@
 
 set -eu
 
+read -r binary
 # Mimic ejudge-execute protocol, but do not measure anything and do not restrict permissions.
 cat <<EOF
-task_Start: execv(1): `realpath "$1"` 0<$2 1>$3 2>$4
+task_Start: execv(1): `realpath "$binary"` 0<$1 1>$2 2>$3
 Status: OK
 CPUTime: 0
 RealTime: 0
 VMSize: 0
 EOF
-exec "`realpath "$1"`" < "$2" > "$3" 2> "$4"
+exec "`realpath "$binary"`" < "$1" > "$2" 2> "$3"

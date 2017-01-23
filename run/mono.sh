@@ -2,11 +2,13 @@
 
 set -eu
 
-export MONO_GC_PARAMS=max-heap-size="$6"m
+read -r exe
+export MONO_GC_PARAMS=max-heap-size="$5"m
 sudo -u invoker ejudge-execute           \
-    --stdin="$2"                         \
-    --stdout="$3"                        \
-    --stderr="$4"                        \
-    --time-limit-millis="$5"             \
-    --real-time-limit=$(($5 * 5 / 1000)) \
-    /usr/bin/mono "$1" | sed "s/VMSize: .*/VMSize: $(($6 * 1048576))/"
+    --stdin="$1"                         \
+    --stdout="$2"                        \
+    --stderr="$3"                        \
+    --time-limit-millis="$4"             \
+    --real-time-limit=$(($4 * 5 / 1000)) \
+    /usr/bin/mono "$exe" 2>&1 |
+    exec sed "s/VMSize: .*/VMSize: $(($5 * 1048576))/"

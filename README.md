@@ -14,9 +14,9 @@ log=log.txt
 tl=1000
 ml=256
 
-binary="`cat source.txt | ./g++14.sh 2> "$log"`"
+data="`cat attempt.src | ./g++14.sh 2> "$log"`"
 for input in ./*.in; do
-    run/native.sh "$binary" "$input" "$output" "$error" "$tl" "$ml" > "$log" 2>&1
+    echo "$data" | run/native.sh "$input" "$output" "$error" "$tl" "$ml" > "$log"
     cmp "$output" "${input%.*}.out"
 done
 ```
