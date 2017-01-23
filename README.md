@@ -14,7 +14,7 @@ log=log.txt
 tl=1000
 ml=256
 
-data="`cat attempt.src | ./g++14.sh 2> "$log"`"
+data="`cat attempt.src | compile/g++14.sh 2> "$log"`"
 for input in ./*.in; do
     echo "$data" | run/native.sh "$input" "$output" "$error" "$tl" "$ml" > "$log"
     cmp "$output" "${input%.*}.out"
