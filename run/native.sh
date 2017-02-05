@@ -4,6 +4,7 @@ set -eu
 
 read -r binary
 exec sudo -u invoker ejudge-execute      \
+    --secure-exec --security-violation   \
     --stdin="$1"                         \
     --stdout="$2"                        \
     --stderr="$3"                        \
@@ -12,6 +13,4 @@ exec sudo -u invoker ejudge-execute      \
     --memory-limit                       \
     --max-vm-size="$5"M                  \
     --max-stack-size="$5"M               \
-    --secure-exec                        \
-    --security-violation                 \
     "`realpath "$binary"`" 2>&1

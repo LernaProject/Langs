@@ -4,6 +4,7 @@ set -eu
 
 read -r file
 exec sudo -u invoker ejudge-execute      \
+    --secure-exec --security-violation   \
     --stdin="$1"                         \
     --stdout="$2"                        \
     --stderr="$3"                        \
