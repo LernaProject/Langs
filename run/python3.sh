@@ -12,4 +12,4 @@ exec sudo -u invoker ejudge-execute      \
     --memory-limit                       \
     --max-vm-size="$5"M                  \
     --max-stack-size="$5"M               \
-    /opt/py3venv/bin/python3 "$file" 2>&1
+    /trusted/py3/bin/python3 "$file" 2>&1
