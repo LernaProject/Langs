@@ -10,4 +10,4 @@ tee main.pl | exec sudo -u invoker ejudge-execute \
     --memory-limit                     \
     --max-vm-size=64M                  \
     --max-stack-size=64M               \
-    /usr/bin/perl -c - 1>&2
+    /usr/bin/perl -c - >&2

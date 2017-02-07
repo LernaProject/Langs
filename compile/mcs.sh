@@ -5,4 +5,4 @@ set -eu
 echo main.exe
 cat > main.cs
 exec mcs \
-    -d:ONLINE_JUDGE -debug- -o+ -unsafe+ main.cs 1>&2
+    -d:ONLINE_JUDGE -debug- -o+ -unsafe+ main.cs >&2
