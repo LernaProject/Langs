@@ -12,7 +12,7 @@ sudo -u invoker ejudge-execute           \
     /usr/bin/java               \
         -DONLINE_JUDGE          \
         -Djava.security.manager \
-        -Djava.security.policy="`dirname "$0"`/../java_policies/default.policy" \
+        -Djava.security.policy=/trusted/java/jre/lib/security/lerna.policy \
         -Xmx"$5"M               \
         "$class" 2>&1 |
     exec sed "s/VMSize: .*/VMSize: $(($5 * 1048576))/"
