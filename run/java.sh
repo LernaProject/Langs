@@ -9,5 +9,10 @@ sudo -u invoker ejudge-execute           \
     --stderr="$3"                        \
     --time-limit-millis="$4"             \
     --real-time-limit=$(($4 * 5 / 1000)) \
-    /usr/bin/java -DONLINE_JUDGE=true -Xmx"$5"M "$class" 2>&1 |
+    /usr/bin/java               \
+        -DONLINE_JUDGE          \
+        -Djava.security.manager \
+        -Djava.security.policy="`dirname "$0"`/../java_policies/default.policy" \
+        -Xmx"$5"M               \
+        "$class" 2>&1 |
     exec sed "s/VMSize: .*/VMSize: $(($5 * 1048576))/"

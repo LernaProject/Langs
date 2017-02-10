@@ -1,0 +1,7 @@
+grant {
+    permission java.io.FilePermission "input.txt", "read";
+    permission java.io.FilePermission "output.txt", "write";
+    permission java.io.FilePermission "error.txt", "write";
+    permission java.util.PropertyPermission "ONLINE_JUDGE", "read";
+    permission java.util.PropertyPermission "user.language", "read,write";
+};
