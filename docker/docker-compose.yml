@@ -1,0 +1,52 @@
+version: 2
+
+volumes:
+  # gcc: # Inherited by tester.
+  llvm:
+  gawk:
+  # python3: # Inherited by tester.
+
+services:
+  tester:
+    image: lerna/tester
+    build: tester
+    container_name: lerna_tester
+    depends_on:
+    # - gcc
+    - llvm
+    - gawk
+    # - python3
+    network_mode: host
+    volumes:
+    # - gcc:/trusted/gcc:ro
+    - llvm:/trusted/llvm:ro
+    - gawk:/trusted/gawk:ro
+    # - python3:/trusted/python3:ro
+
+  # gcc:
+  #   image: lerna/comp/gcc
+  #   build: gcc
+  #   container_name: lerna_comp_gcc
+  #   volumes: [gcc:/trusted/gcc]
+  #   entrypoint: [/bin/true]
+
+  llvm:
+    image: lerna/comp/llvm
+    build: llvm
+    container_name: lerna_comp_llvm
+    volumes: [llvm:/trusted/llvm]
+    entrypoint: [/bin/true]
+
+  gawk:
+    image: lerna/comp/gawk
+    build: gawk
+    container_name: lerna_comp_gawk
+    volumes: [gawk:/trusted/gawk]
+    entrypoint: [/bin/true]
+
+  # python3:
+  #   image: lerna/comp/python3
+  #   build: python3
+  #   container_name: lerna_comp_python3
+  #   volumes: [python3:/trusted/python3]
+  #   entrypoint: [/bin/true]

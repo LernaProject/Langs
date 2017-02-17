@@ -1,0 +1,16 @@
+graph {
+    rankdir = BT
+    node [shape=hexagon]
+    edge [style=dashed]
+    "Lerna.Tester"
+    node [style=filled]
+    subgraph cluster_shc {
+        label = "Self-hosting compilers"
+        style = dotted
+        GCC, LLVM
+    }
+    Debian -- {GCC LLVM}
+    GCC -- {GAwk "Python 3"}
+    LLVM -- {LDC GHC}
+    "Python 3" -- "Lerna.Tester"
+}
