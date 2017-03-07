@@ -4,4 +4,8 @@ grant {
     permission java.io.FilePermission "error.txt", "write";
     permission java.util.PropertyPermission "ONLINE_JUDGE", "read";
     permission java.util.PropertyPermission "user.language", "read,write";
+    permission java.util.PropertyPermission "scala.version.number", "read";
+    permission java.util.PropertyPermission "scala.maven.version.number", "read";
+    permission java.util.PropertyPermission "scala.copyright.string", "read";
+    permission java.util.PropertyPermission "scala.time", "read";
 };
